@@ -10,16 +10,25 @@ const finalWithModEl = document.getElementById('final-with-mod');
 const modifierInput = document.getElementById('modifier-input');
 const rollBtn = document.getElementById('roll-btn');
 
+const diceValueA = diceA.querySelector('.dice-value');
+const diceValueB = diceB.querySelector('.dice-value');
+const diceValueC = diceC.querySelector('.dice-value');
+
 let lastTotal = null;
 
 const rollDie = (sides) => Math.floor(Math.random() * sides) + 1;
 
+const triggerRollAnimation = (die) => {
+  die.classList.remove('roll');
+  void die.offsetWidth;
+  die.classList.add('roll');
+};
+
 const animateDice = () => {
-  [diceA, diceB, diceC].forEach((die) => {
-    die.classList.remove('roll');
-    void die.offsetWidth; // restart animation
-    die.classList.add('roll');
-  });
+  [diceA, diceB].forEach(triggerRollAnimation);
+  if (!diceC.hasAttribute('hidden')) {
+    triggerRollAnimation(diceC);
+  }
 };
 
 const applyModifier = () => {
@@ -61,8 +70,8 @@ const rollDice = () => {
     const first = rollDie(6);
     const second = rollDie(6);
 
-    diceA.textContent = first;
-    diceB.textContent = second;
+    diceValueA.textContent = first;
+    diceValueB.textContent = second;
 
     let baseTotal = first + second;
     let d4Info = null;
@@ -73,7 +82,8 @@ const rollDice = () => {
     const isExtremeSuccess = first === 6 && second === 6;
     const isExtremeFail = first === 1 && second === 1;
 
-    diceC.textContent = '–';
+    diceC.hidden = true;
+    diceValueC.textContent = '–';
     d4Line.hidden = true;
 
     if (isExtremeSuccess) {
@@ -112,11 +122,14 @@ const rollDice = () => {
 
     if (d4Info) {
       d4Line.hidden = false;
-      diceC.textContent = d4Info.value;
+      diceC.hidden = false;
+      diceValueC.textContent = d4Info.value;
+      triggerRollAnimation(diceC);
       d4ValueEl.textContent = `${d4Info.type === 'add' ? '+' : '−'}${d4Info.value}`;
       baseTotal = d4Info.type === 'add' ? baseTotal + d4Info.value : baseTotal - d4Info.value;
     } else {
       d4ValueEl.textContent = '–';
+      diceC.hidden = true;
     }
 
     baseEl.textContent = `${first} + ${second} = ${first + second}`;
