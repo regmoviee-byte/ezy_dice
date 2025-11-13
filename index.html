@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EZY: CYBER DICE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unica+One&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <h1>EZY: CYBER DICE</h1>
+        <p class="tagline">Неоновый бросок для вашего киберпанк-стола</p>
+      </header>
+
+      <section class="dice-display" aria-live="polite">
+        <div class="dice" id="dice-a" data-label="D6"></div>
+        <div class="dice" id="dice-b" data-label="D6"></div>
+        <div class="dice dice--d4" id="dice-c" data-label="D4"></div>
+      </section>
+
+      <section class="result-panel">
+        <p id="status" class="status-text">Нажми кнопку, чтобы бросить кубики.</p>
+        <div class="result-line">
+          <span>Базовая сумма:</span>
+          <strong id="base-total">–</strong>
+        </div>
+        <div class="result-line" id="d4-line" hidden>
+          <span>Кубик d4:</span>
+          <strong id="d4-value">–</strong>
+        </div>
+        <div class="result-line">
+          <span>Итог без модификатора:</span>
+          <strong id="final-total">–</strong>
+        </div>
+      </section>
+
+      <section class="modifier-panel">
+        <label for="modifier-input">Модификатор (необязательно)</label>
+        <input id="modifier-input" type="number" placeholder="например, +2" />
+        <div class="result-line modifier-output">
+          <span>Итог с модификатором:</span>
+          <strong id="final-with-mod">–</strong>
+        </div>
+      </section>
+
+      <button id="roll-btn" class="primary-btn">Бросить кубики</button>
+    </main>
+
+    <footer>
+      <small>Создано для телеграм-мини-приложения. Поддерживает тёмную тему Telegram.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
