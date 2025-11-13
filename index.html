@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EZY: CYBER DICE</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <p class="tag">Мини-приложение для Telegram</p>
+        <h1>EZY: CYBER DICE</h1>
+        <p class="subtitle">
+          Киберпанковский бросок двух d6 с дополнительным d4 и модификатором.
+        </p>
+      </header>
+
+      <section class="dice-panel">
+        <div class="dice d6" id="d6-a">?</div>
+        <div class="dice d6" id="d6-b">?</div>
+        <div class="dice d4 hidden" id="d4">?</div>
+      </section>
+
+      <section class="result-panel">
+        <p id="result-message">Нажмите кнопку ниже, чтобы бросить кубики.</p>
+        <p id="sum-display" class="sum">Сумма: —</p>
+      </section>
+
+      <section class="modifier-panel">
+        <label for="modifier">Модификатор (необязательно)</label>
+        <div class="modifier-input">
+          <input type="number" id="modifier" placeholder="0" />
+          <span class="suffix">±</span>
+        </div>
+        <p id="total-display" class="sum">Итог с модификатором: —</p>
+      </section>
+
+      <button id="roll-btn" class="roll-button">Бросить кубики</button>
+    </main>
+
+    <div id="status-overlay" class="status-overlay hidden">
+      <p id="status-text"></p>
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
