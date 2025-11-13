@@ -20,9 +20,15 @@
       </header>
 
       <section class="dice-display" aria-live="polite">
-        <div class="dice" id="dice-a" data-label="D6"></div>
-        <div class="dice" id="dice-b" data-label="D6"></div>
-        <div class="dice dice--d4" id="dice-c" data-label="D4"></div>
+        <div class="dice" id="dice-a" data-label="D6">
+          <span class="dice-value">–</span>
+        </div>
+        <div class="dice" id="dice-b" data-label="D6">
+          <span class="dice-value">–</span>
+        </div>
+        <div class="dice dice--d4" id="dice-c" data-label="D4" hidden>
+          <span class="dice-value">–</span>
+        </div>
       </section>
 
       <section class="result-panel">
@@ -54,7 +60,7 @@
     </main>
 
     <footer>
-      <small>Создано для телеграм-мини-приложения. Поддерживает тёмную тему Telegram.</small>
+      <small>Создано для игр EZY System. Студия «Офиздат!»</small>
     </footer>
 
     <script src="app.js"></script>
